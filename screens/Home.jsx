@@ -6,7 +6,7 @@ import { setOrigin } from "../slice/navSlice";
 import NavOptions from "../components/NavOptions";
 
 const source = require("../resources/App.png");
-export default function Home() {
+export default function Home({ navigation }) {
   const dispatch = useDispatch();
   dispatch(setIsStatusbarHide(false)); //hide statusbar
   dispatch(setStatusbarColor("white")); //hide statusbar
@@ -19,7 +19,10 @@ export default function Home() {
           resizeMode="contain"
         />
       </View>
-      <NavOptions />
+      <NavOptions
+        disabled={false} //disabled option buttons
+        itemOnClick={(item) => navigation.navigate("map")}
+      />
     </View>
   );
 }

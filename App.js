@@ -5,14 +5,18 @@ import Home from "./screens/Home";
 import { store } from "./store";
 import { Constants } from "expo-constants";
 import Screen from "./components/Screen";
+import RootRoutes from "./navigation/RootRoutes";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   Constants;
   return (
     <Provider store={store}>
-      <Screen>
-        <Home />
-      </Screen>
+      <SafeAreaProvider>
+        <Screen>
+          <RootRoutes />
+        </Screen>
+      </SafeAreaProvider>
     </Provider>
   );
 }

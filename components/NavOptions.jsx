@@ -1,57 +1,13 @@
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React from "react";
-import Icon from "react-native-vector-icons/AntDesign";
+import { useDispatch } from "react-redux";
+import { setIsStatusbarHide, setStatusbarColor } from "../slice/utilsSlice";
+import ItemCard from "../components/ItemCard";
 
-export default function NavOptions() {
-  const ItemCard = ({ item }) => {
-    return (
-      <TouchableOpacity
-        style={{
-          paddingVertical: 10,
-          paddingHorizontal: 30,
-          margin: 10,
-          backgroundColor: "#ccc",
-          height: 200,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Image source={{ uri: item?.image }} style={styles.imageItem} />
-        <Text
-          style={{
-            fontSize: 16,
-            textTransform: "capitalize",
-            paddingVertical: 5,
-          }}
-        >
-          {item?.title}
-        </Text>
-        <View
-          style={{
-            width: 50,
-            height: 50,
-            backgroundColor: "#000",
-            borderRadius: 25,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: 10,
-          }}
-        >
-          <Icon name="arrowright" size={30} color="white" />
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
+export default function NavOptions({ itemOnClick, disabled = false }) {
+  const dispatch = useDispatch();
+  //   dispatch(setIsStatusbarHide(false));
+  //   dispatch(setStatusbarColor("red"));
   const data = [
     {
       title: "get a ride",
@@ -83,17 +39,14 @@ export default function NavOptions() {
         keyExtractor={(item) => item.id}
         horizontal
         data={data}
-        renderItem={({ item }) => <ItemCard item={item} />}
+        renderItem={({ item }) => (
+          <ItemCard
+            disabled={disabled}
+            item={item}
+            itemOnClick={() => itemOnClick(item)}
+          />
+        )}
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  imageItem: {
-    width: 100,
-    height: 100,
-    resizeMode: "contain",
-    padding: 10,
-  },
-});
