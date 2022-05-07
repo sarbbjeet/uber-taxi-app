@@ -4,7 +4,7 @@ export const utilsSlice = createSlice({
   name: "utilsSlice",
   initialState: {
     statusbarColor: "white",
-    isStatusbarHide: false,
+    isStatusbarHide: true,
   },
   reducers: {
     setStatusbarColor: (state, action) => {

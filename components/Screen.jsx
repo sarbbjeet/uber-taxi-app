@@ -15,8 +15,11 @@ const AppStatusbar = ({ backgroundColor, hide }) => (
 );
 
 export default function Screen({ children }) {
-  const statusbarColor = useSelector(getStatusbarColor);
-  const isStatusbarHide = useSelector(getIsStatusbarHide);
+  const { isStatusbarHide, statusbarColor } = useSelector(
+    (state) => state.utilsSlice
+  );
+  // const statusbarColor = useSelector(getStatusbarColor);
+  // const isStatusbarHide = useSelector(getIsStatusbarHide);
   return (
     <View style={{ flex: 1 }}>
       <AppStatusbar backgroundColor={statusbarColor} hide={isStatusbarHide} />

@@ -13,17 +13,22 @@ const AutocompletePlacesInput = ({ onChangeInput }) => {
     <GooglePlacesAutocomplete
       styles={{
         container: {
-          flex: 0,
+          flex: 1,
+          width: "100%",
+          position: "absolute",
+          zIndex: 10,
           paddingHorizontal: 5,
         },
         textInput: {
-          fontSize: 18,
+          fontSize: 16,
         },
       }}
       nearbyPlacesAPI="GooglePlacesSearch"
       enablePoweredByContainer={false}
       placeholder="Where from ?"
       minLength={2}
+      returnKeyType="search"
+      fetchDetails={true}
       onPress={(data, details = null) => onChangeInput(data, details)}
       query={query}
       debounce={400}
