@@ -8,29 +8,29 @@ const initialState = {
 const navSlice = createSlice({
   name: "navSlice",
   initialState,
-  reducer: {
+  reducers: {
     setOrigin: (state, action) => {
       return {
         ...state,
-        origin: action.payload.origin,
+        origin: action.payload,
       };
     },
     setDestination: (state, action) => {
       return {
         ...state,
-        destination: action.payload.destination,
+        destination: action.payload,
       };
     },
     setTimeToTravel: (state, action) => {
       return {
         ...state,
-        timeToTravel: action.payload.timeToTravel,
+        timeToTravel: action.payload,
       };
     },
   },
 });
 
-const { setOrigin, setDestination, setTimeToTravel } = navSlice.actions;
+export const { setOrigin, setDestination, setTimeToTravel } = navSlice.actions;
 export default navSlice.reducer;
 
 export const getOrigin = (state) => state.navSlice.origin;
