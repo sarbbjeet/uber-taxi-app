@@ -4,14 +4,19 @@ import { useDispatch } from "react-redux";
 import { setIsStatusbarHide, setStatusbarColor } from "../slice/utilsSlice";
 import { setOrigin } from "../slice/navSlice";
 import NavOptions from "../components/NavOptions";
+import AutocompletePlacesInput from "../components/AutocompletePlacesInput";
 
 const source = require("../resources/App.png");
+
 export default function Home({ navigation }) {
   const dispatch = useDispatch();
   dispatch(setIsStatusbarHide(false)); //hide statusbar
   dispatch(setStatusbarColor("white")); //hide statusbar
   return (
     <View style={{ flex: 1 }}>
+      <AutocompletePlacesInput
+        onChangeInput={(data, details) => console.log(data)}
+      />
       <View style={{ paddingHorizontal: 10 }}>
         <Image
           source={source}
