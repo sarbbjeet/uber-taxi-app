@@ -8,24 +8,17 @@ const query = {
   language: "en",
 };
 
-const AutocompletePlacesInput = ({ onChangeInput }) => {
+const AutocompletePlacesInput = ({
+  placeholder = "where from ?",
+  onChangeInput,
+  styleProps,
+}) => {
   return (
     <GooglePlacesAutocomplete
-      styles={{
-        container: {
-          flex: 1,
-          width: "100%",
-          position: "absolute",
-          zIndex: 10,
-          paddingHorizontal: 5,
-        },
-        textInput: {
-          fontSize: 16,
-        },
-      }}
+      styles={{ ...styles.autoCompleteStyle, ...styleProps }}
       nearbyPlacesAPI="GooglePlacesSearch"
       enablePoweredByContainer={false}
-      placeholder="Where from ?"
+      placeholder={placeholder}
       minLength={2}
       returnKeyType="search"
       fetchDetails={true}
@@ -37,4 +30,18 @@ const AutocompletePlacesInput = ({ onChangeInput }) => {
 };
 export default AutocompletePlacesInput;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  autoCompleteStyle: {
+    container: {
+      flex: 1,
+      width: "100%",
+      position: "absolute",
+      zIndex: 10,
+      paddingHorizontal: 5,
+    },
+    textInput: {
+      backgroundColor: "#ddd",
+      fontSize: 16,
+    },
+  },
+});

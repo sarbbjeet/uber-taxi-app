@@ -6,6 +6,7 @@ import { getOrigin, setDestination, setOrigin } from "../slice/navSlice";
 import NavOptions from "../components/NavOptions";
 import AutocompletePlacesInput from "../components/AutocompletePlacesInput";
 import { useEffect } from "react";
+import NavFavourite from "../components/NavFavourite";
 
 const source = require("../resources/App.png");
 
@@ -31,16 +32,19 @@ export default function Home({ navigation }) {
             dispatch(setDestination(null));
           }}
         />
-        <View style={{ flex: 1, marginHorizontal: 5, marginTop: 50 }}>
+        <View style={{ flex: 1, justifyContent: "center" }}>
           <Image
             source={source}
-            style={{ width: 100, height: 100 }}
+            style={{ marginLeft: 25, width: 120, height: 120 }}
             resizeMode="contain"
           />
           <NavOptions
             disabled={origin ? false : true} //disabled option buttons
             itemOnClick={(item) => navigation.navigate("map")}
           />
+        </View>
+        <View style={{ flex: 1, marginHorizontal: 20 }}>
+          <NavFavourite />
         </View>
       </View>
     </SafeAreaView>
