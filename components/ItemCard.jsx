@@ -8,8 +8,7 @@ const ItemCard = ({ item, itemOnClick, disabled }) => {
       disabled={disabled}
       style={{
         paddingVertical: 10,
-        paddingHorizontal: 30,
-        margin: 10,
+        paddingHorizontal: 35,
         backgroundColor: disabled ? "#ddd" : "#bbb",
         height: 200,
         display: "flex",
@@ -36,7 +35,7 @@ const ItemCard = ({ item, itemOnClick, disabled }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          marginVertical: 5,
+          //   marginVertical: 5,
         }}
       >
         <Icon name="arrowright" size={30} color="white" />

@@ -33,11 +33,7 @@ export default AutocompletePlacesInput;
 const styles = StyleSheet.create({
   autoCompleteStyle: {
     container: {
-      flex: 1,
-      width: "100%",
-      position: "absolute",
-      zIndex: 10,
-      paddingHorizontal: 5,
+      flex: 0,
     },
     textInput: {
       backgroundColor: "#ddd",

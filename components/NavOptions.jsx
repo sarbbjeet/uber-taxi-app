@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setIsStatusbarHide, setStatusbarColor } from "../slice/utilsSlice";
 import ItemCard from "../components/ItemCard";
+import moment from "moment";
 
 export default function NavOptions({ itemOnClick, disabled = false }) {
   const dispatch = useDispatch();
@@ -24,29 +25,19 @@ export default function NavOptions({ itemOnClick, disabled = false }) {
   ];
 
   return (
-    <View
-      style={{
-        display: "flex",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      <FlatList
-        styles={{
-          width: "90%",
-        }}
-        keyExtractor={(item) => item.id}
-        horizontal
-        data={data}
-        renderItem={({ item }) => (
-          <ItemCard
-            disabled={disabled}
-            item={item}
-            itemOnClick={() => itemOnClick(item)}
-          />
-        )}
-      />
-    </View>
+    <FlatList
+      listKey={moment().valueOf().toString()}
+      keyExtractor={(item) => item.id}
+      ItemSeparatorComponent={() => <View style={{ marginHorizontal: 10 }} />}
+      horizontal
+      data={data}
+      renderItem={({ item }) => (
+        <ItemCard
+          disabled={disabled}
+          item={item}
+          itemOnClick={() => itemOnClick(item)}
+        />
+      )}
+    />
   );
 }

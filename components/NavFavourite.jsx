@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/AntDesign";
+import moment from "moment";
 
 const data = [
   {
@@ -28,6 +29,7 @@ const NavFavourite = ({ favList = [], onPress = () => {} }) => {
   return (
     <FlatList
       data={[...data, ...favList]}
+      listKey={moment().valueOf().toString()}
       keyExtractor={(item) => item.id}
       ItemSeparatorComponent={() => (
         <View style={{ height: 1, backgroundColor: "#ccc" }} />

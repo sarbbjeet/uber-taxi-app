@@ -12,7 +12,6 @@ const Map = ({ style }) => {
   const origin = useSelector(getOrigin);
   const destination = useSelector(getDestination);
   const mapRef = useRef(null);
-
   useEffect(() => {
     if (!origin || !destination) return;
     //fit & zoom markers
@@ -38,6 +37,9 @@ const Map = ({ style }) => {
           destination={destination.description}
           apikey={Google_Map_APIKey}
           strokeWidth={3}
+          //way to handle error
+          //   onError={(item) => console.log("erorr..", item)}
+          lineDashPattern={[0]}
           strokeColor="black"
         />
       )}

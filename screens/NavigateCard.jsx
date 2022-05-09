@@ -34,7 +34,7 @@ const NavigateCard = ({ navigation }) => {
           navigation.navigate("rideOptionCard");
         }}
       />
-      <View style={{ marginTop: 50 }}>
+      <View style={{ marginTop: 40 }}>
         <NavFavourite />
       </View>
       <View
@@ -51,12 +51,13 @@ const styles = StyleSheet.create({
   searchBoxStyle: {
     container: {
       flex: 1,
-      width: "100%",
       position: "absolute",
-      marginTop: 60,
+      zIndex: 2,
+      width: "100%",
+      top: 50,
     },
-    textInput: {
-      backgroundColor: "#fff",
-    },
+    // textInput: {
+    //   // backgroundColor: "#fff",
+    // },
   },
 });

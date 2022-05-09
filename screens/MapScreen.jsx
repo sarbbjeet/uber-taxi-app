@@ -5,7 +5,7 @@ import Constants from "expo-constants";
 
 import { getDestination, getOrigin } from "../slice/navSlice";
 import BackButton from "../components/BackButton";
-import MapHalfScreenRoute from "../navigation/MapHalfScreenRoute";
+import MapScreenRoutes from "../navigation/MapScreenRoutes";
 
 import Map from "../components/Map";
 export default function MapScreen({ navigation }) {
@@ -16,7 +16,7 @@ export default function MapScreen({ navigation }) {
       <Map style={{ flex: 1 }} />
 
       <View style={{ flex: 1 }}>
-        <MapHalfScreenRoute />
+        <MapScreenRoutes />
       </View>
     </View>
   );
