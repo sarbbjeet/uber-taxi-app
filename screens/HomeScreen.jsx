@@ -13,16 +13,26 @@ import AutocompletePlacesInput from "../components/AutocompletePlacesInput";
 import NavFavourite from "../components/NavFavourite";
 import NavOptions from "../components/NavOptions";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrigin, setDestination, setOrigin } from "../slice/navSlice";
+import {
+  getDistaceToTravel,
+  getOrigin,
+  setDestination,
+  setOrigin,
+} from "../slice/navSlice";
+import { useEffect } from "react";
 export default function HomeScreen({ navigation }) {
   const dispatch = useDispatch();
-
+  const { origin, destination } = useSelector((state) => state.navSlice);
+  useEffect(
+    () => async () => await dispatch(getDistaceToTravel())(),
+    [origin, destination]
+  );
   /* stop diplaying VirtualizedLists error */
   LogBox.ignoreLogs([
     "VirtualizedLists should never be nested inside plain ScrollViews with the same orientation because it can break windowing and other functionality - use another VirtualizedList-backed container instead",
   ]);
   /**************************************** */
-  const origin = useSelector(getOrigin);
+  //const origin = useSelector(getOrigin);
   return (
     <SafeAreaView
       style={{

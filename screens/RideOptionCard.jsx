@@ -11,12 +11,16 @@ import React from "react";
 import Icon from "react-native-vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getDistanceToTravel, getTimeToTravel } from "../slice/navSlice";
 
+const SURGE_CHARGE_RATE = 1.45;
 const data = [
   {
     title: "UberX",
     image: "https://links.papareact.com/5w8",
     price: "10",
+    multipler: 1,
     id: 1,
   },
   {
@@ -39,11 +43,20 @@ const RideOptionCard = () => {
   const navigation = useNavigation();
   const [selectCar, setSelectCar] = useState("");
   const eventToSelectCar = (titleOfCar) => setSelectCar(titleOfCar);
+  // distance in string -> (Text)
+  //distance in numberical -> value
+  const timeToTravel = useSelector(getTimeToTravel);
+  const distanceToTravel = useSelector(getDistanceToTravel);
 
+  const formulaToCalPrice = (multipler) =>
+    new Intl.NumberFormat("en-gb", {
+      style: "currency",
+      currency: "GBP",
+    }).format((timeToTravel?.value * SURGE_CHARGE_RATE * multipler) / 100);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Text style={{ paddingVertical: 25, fontSize: 20, textAlign: "center" }}>
-        Select a Ride
+        Select a Ride - {distanceToTravel?.text}
       </Text>
       <View style={{ height: 1, backgroundColor: "#ddd" }} />
       <TouchableOpacity
@@ -89,13 +102,19 @@ const RideOptionCard = () => {
                 >
                   {item.title}
                 </Text>
-                <Text style={{ fontSize: 18, color: "#888" }}>Time take</Text>
+                <Text style={{ fontSize: 16, color: "#888" }}>
+                  {timeToTravel?.text} travel time
+                </Text>
               </View>
-              <View style={{ marginRight: 10 }}>
+              <View style={{ marginLeft: -20 }}>
                 <Text
-                  style={{ fontSize: 18, color: "#444", fontWeight: "bold" }}
+                  style={{
+                    fontSize: 16,
+                    color: "#444",
+                    fontWeight: "bold",
+                  }}
                 >
-                  {item.price} £
+                  {formulaToCalPrice(item?.multipler)} £
                 </Text>
               </View>
             </TouchableOpacity>

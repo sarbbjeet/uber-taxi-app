@@ -25,8 +25,8 @@ const Map = ({ style }) => {
       ref={mapRef}
       mapType="mutedStandard"
       initialRegion={{
-        latitude: origin.location.lat,
-        longitude: origin.location.lng,
+        latitude: origin?.location.lat,
+        longitude: origin?.location.lng,
         latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       }}
@@ -46,8 +46,8 @@ const Map = ({ style }) => {
       {origin?.location && (
         <Marker
           coordinate={{
-            latitude: origin.location.lat,
-            longitude: origin.location.lng,
+            latitude: origin?.location?.lat,
+            longitude: origin?.location?.lng,
           }}
           title="Origin"
           description={origin.description}

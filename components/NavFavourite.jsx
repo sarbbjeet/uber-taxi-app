@@ -38,7 +38,7 @@ const NavFavourite = ({ favList = [], onPress = () => {} }) => {
         <TouchableOpacity
           onPress={() => onPress(item)}
           style={{
-            marginVertical: 10,
+            marginVertical: 20,
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
